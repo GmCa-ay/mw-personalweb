@@ -307,6 +307,9 @@ nav.scrolled {
   color: var(--muted);
   animation: fadeUp 0.8s 0.5s ease both;
 }
+.hero-scroll-hint span {
+  margin-right: -0.15em;
+}
 .scroll-line {
   width: 1px;
   height: 40px;
