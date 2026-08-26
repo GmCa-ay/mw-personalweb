@@ -15,7 +15,7 @@
 
 /*Reset*/
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); overflow-x: hidden; width: 100%; }
 body {
   background: var(--bg);
   color: var(--text);
@@ -23,6 +23,8 @@ body {
   font-weight: 300;
   line-height: 1.7;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 a { color: inherit; text-decoration: none; }
 img { display: block; width: 100%; }
@@ -421,7 +423,7 @@ nav.scrolled {
 .about-text p { color: var(--muted); margin-bottom: 1rem; }
 .about-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
   margin-top: 2.5rem;
   padding-top: 2.5rem;
@@ -433,6 +435,7 @@ nav.scrolled {
   font-weight: 300;
   color: var(--accent);
   line-height: 1;
+  word-break: break-word;
 }
 .lng2 { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; margin-top: 0.3rem; }
 
@@ -440,7 +443,7 @@ nav.scrolled {
 .skills-intro { max-width: 520px; color: var(--muted); margin-bottom: 3.5rem; }
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1.5rem;
 }
 .skill-card {
@@ -495,7 +498,7 @@ nav.scrolled {
 #portfolio { background: var(--surface); }
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 1.5rem;
 }
 .project-card {
@@ -563,7 +566,7 @@ nav.scrolled {
 /*Services*/
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 1.5rem;
 }
 .service-card {
@@ -762,5 +765,12 @@ footer {
   .about-img-wrap { order: -1; }
   .contact-grid { grid-template-columns: 1fr; }
   .hero-h1 { font-size: clamp(2.5rem, 9vw, 4rem); }
-  .about-stats { grid-template-columns: repeat(3, 1fr); }
+  .about-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+  .lng { font-size: 1.5rem; }
+  .toast { left: 1rem; right: 1rem; bottom: 1rem; max-width: none; }
+}
+
+@media (max-width: 420px) {
+  .about-stats { grid-template-columns: 1fr; gap: 1rem; text-align: left; }
+  .lng { font-size: 1.75rem; }
 }
